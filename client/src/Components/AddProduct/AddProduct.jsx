@@ -6,13 +6,16 @@ const AddProduct = () => {
 
   const[image,setImage] = useState(false);
   const [productDetails,setProductDetails] = useState({
-      name:"",
-      image:"",
-      category:"women",
-      new_price:"",
-      old_price:"",
-      address: ""
-  });
+      name: "",
+      image: "",
+      category: "women",
+      new_price: "",
+      old_price: "",
+      address: "",
+      height: "", // New fields for height, width, and length
+      width: "",
+      length: "",
+    });
 
   const AddProduct = async () => {
     
@@ -83,6 +86,18 @@ const AddProduct = () => {
           <option value="kid">Kid</option>
         </select> 
       </div>
+      <div className="addproduct-itemfield">
+      <p>Height</p>
+      <input type="text" name="height" value={productDetails.height} onChange={(e) => { changeHandler(e); }} placeholder="Enter height" />
+    </div>
+    <div className="addproduct-itemfield">
+      <p>Width</p>
+      <input type="text" name="width" value={productDetails.width} onChange={(e) => { changeHandler(e); }} placeholder="Enter width" />
+    </div>
+    <div className="addproduct-itemfield">
+      <p>Length</p>
+      <input type="text" name="length" value={productDetails.length} onChange={(e) => { changeHandler(e); }} placeholder="Enter length" />
+    </div>
       <div className="addproduct-itemfield">
       <p>Address</p>
       <input
