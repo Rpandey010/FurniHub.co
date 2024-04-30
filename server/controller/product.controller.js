@@ -18,7 +18,11 @@ exports.createProduct =  async (req, res) => {
         new_price: req.body.new_price,
         old_price: req.body.old_price,
         address: req.body.address,
+        height: req.body.height, 
+        width: req.body.width,
+        length: req.body.length,
       });
+    
       console.log(product);
       await product.save();
       console.log("Saved");
