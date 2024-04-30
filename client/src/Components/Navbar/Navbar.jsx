@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../Assets/furniHub.co.png';
@@ -14,6 +14,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   const { getTotalCartItems } = useContext(ShopContext);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -25,6 +26,19 @@ const Navbar = () => {
     });
     return () => unsubscribe();
   }, []); // Only run on component mount
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleLogout = () => {
     firebase.auth().signOut().then(() => {
@@ -65,11 +79,11 @@ const Navbar = () => {
           />
           <button onClick={handleSearch} className="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">Search</button>
 
-          <div className="ml-4 flex items-center space-x-4 relative">
+          <div className="ml-4 flex items-center space-x-4 relative" ref={dropdownRef}>
             {user ? (
               <div className="relative inline-block text-left">
                 <button className="inline-flex justify-center items-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                  id="options-menu" aria-expanded="true" aria-haspopup="true" onClick={() => setMenu(prevState => !prevState)}>
+                  id="options-menu" aria-expanded="true" aria-haspopup="true" onClick={() => setMenu(!menu)}>
                   {user.displayName}
                   <img src={nav_dropdown} className="ml-2 h-5 w-5" alt="dropdown" />
                 </button>
@@ -79,6 +93,7 @@ const Navbar = () => {
                     <div className="py-1" role="none">
                       <Link to="/add-product" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Add Product</Link>
                       <Link to="/list-product" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">List Product</Link>
+                      <Link to="/order-history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Order History</Link>
 
                       <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Logout</button>
                     </div>
