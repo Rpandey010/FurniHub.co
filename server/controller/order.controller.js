@@ -22,3 +22,14 @@ exports.saveOrder = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+exports.getOrderHistory = async (req, res) => {
+  try {
+    const orders = await Order.find().sort('-createdAt');
+    res.status(200).json({ orders });
+  } catch (error) {
+    console.error('Error fetching order history:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
