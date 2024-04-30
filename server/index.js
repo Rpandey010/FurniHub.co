@@ -25,7 +25,6 @@ app.use(cors());
 // Database Connection With MongoDB
 mongoose.connect("mongodb+srv://aryansharma21:aryanrandi@cluster0.0qhzcry.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/e-commerce");
 
-const __directoryName = path.resolve();
 
 //Image Storage Engine 
 const storage = multer.diskStorage({
@@ -44,10 +43,6 @@ app.post("/upload", upload.single('product'), (req, res) => {
 })
 app.use('/images', express.static('upload/images'));
 
-app.use(express.static(path.join(__directoryName, '../client/public'))); // For React Build
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__directoryName, '../client/public/index.html'));
-});  
 
 // // MiddleWare to fetch user from database
 const fetchuser = async (req, res, next) => {
