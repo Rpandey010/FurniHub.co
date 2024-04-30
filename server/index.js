@@ -44,9 +44,9 @@ app.post("/upload", upload.single('product'), (req, res) => {
 })
 app.use('/images', express.static('upload/images'));
 
-app.use(express.static(path.join(__directoryName, '../client/dist'))); // For React Build
+app.use(express.static(path.join(__directoryName, '../client/public'))); // For React Build
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__directoryName, '../client/dist/index.html'));
+  res.sendFile(path.join(__directoryName, '../client/public/index.html'));
 });  
 
 // // MiddleWare to fetch user from database
