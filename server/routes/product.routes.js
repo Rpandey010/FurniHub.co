@@ -20,4 +20,7 @@ router.get("/popularinwomen", productController.getPopularInWomen);
 // Search for a product
 router.get("/search", productController.searchProductByName);
 
+// Get all products by user email ID
+router.get("/allproductsbyuser", productController.getAllProductsByUser); // Add this route
+
 module.exports = router;
