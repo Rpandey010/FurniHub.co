@@ -104,7 +104,7 @@ async function savePaymentDetails(orderId, paymentId, amount, products) {
 //     console.error('Failed to handle payment success:', error);
 //   }
 // }
-// Function to handle payment success
+// // Function to handle payment success
 async function handlePaymentSuccess(email, amount, orderId, paymentId, products) {
   try {
     // Sending payment success email
@@ -116,6 +116,9 @@ async function handlePaymentSuccess(email, amount, orderId, paymentId, products)
     console.error('Failed to handle payment success:', error);
   }
 }
+// Before calling handlePaymentSuccess, ensure orderId and products are valid
+// This is likely inside a function or method where orderId and products are defined
+
 
 // module.exports = { createOrder, verifyPayment, sendEmail, savePaymentDetails };
 module.exports = { createOrder, verifyPayment, handlePaymentSuccess };
