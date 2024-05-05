@@ -1,33 +1,49 @@
 const Product = require('../model/product.model'); // Assuming the Product model is in the models directory
+const { sendNewProductEmail } = require('../mail/product.mail'); // Import the email function
 
-exports.createProduct =  async (req, res) => {
-      let products = await Product.find({});
-      let id;
-      if (products.length>0) {
-        let last_product_array = products.slice(-1);
-        let last_product = last_product_array[0];
-        id = last_product.id+1;
-      }
-      else
-      { id = 1; }
-      const product = new Product({
-        id: id,
-        name: req.body.name,
-        image: req.body.image,
-        category: req.body.category,
-        new_price: req.body.new_price,
-        old_price: req.body.old_price,
-        address: req.body.address,
-        height: req.body.height, 
-        width: req.body.width,
-        length: req.body.length,
-      });
-    
-      console.log(product);
-      await product.save();
-      console.log("Saved");
-      res.json({success:true,name:req.body.name})
-    };
+exports.createProduct = async (req, res) => {
+  try {
+    let products = await Product.find({});
+    let id;
+    if (products.length > 0) {
+      let last_product_array = products.slice(-1);
+      let last_product = last_product_array[0];
+      id = last_product.id + 1;
+    } else {
+      id = 1;
+    }
+    const product = new Product({
+      id: id,
+      name: req.body.name,
+      image: req.body.image,
+      category: req.body.category,
+      new_price: req.body.new_price,
+      old_price: req.body.old_price,
+      address: req.body.address,
+      height: req.body.height,
+      width: req.body.width,
+      length: req.body.length,
+      emailID: req.body.emailID,
+      sellerName: req.body.sellerName,
+      description: req.body.description,  
+    });
+
+    console.log(product);
+    await product.save();
+
+    // Call sendNewProductEmail function with emailID parameter
+    sendNewProductEmail(product.emailID, product);
+
+    console.log("Saved");
+    res.json({ success: true, name: req.body.name });
+  } catch (error) {
+    console.error("Error occurred while creating product:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+};
+
+
+
 
 
 exports.removeProduct = async (req, res) => {
@@ -67,3 +83,13 @@ exports.getAllProducts = async (req, res) => {
         res.status(500).json({ success: false, error: "Internal Server Error" });
     }
 }
+exports.getAllProductsByUser = async (req, res) => {
+  const emailID = req.query.emailID;
+  try {
+      const products = await Product.find({ emailID: emailID });
+      res.send(products);
+  } catch (error) {
+      console.error("Error occurred while fetching products:", error);
+      res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+};
