@@ -15,6 +15,7 @@ import ListProduct from "./Components/ListProduct/ListProduct";
 import OrderHistory from "./Components/History/orderHistory";
 import Aboutus from "./Components/AboutUs/Aboutus";
 import FAQ from "./Components/FAQ/FAQ";
+import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyPolicy";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/login" element={<LoginSignup/>} />
           <Route path="/About-us" element={<Aboutus />} />
           <Route path="/FAQ" element={<FAQ/>} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
         <Footer />
       </Router>
