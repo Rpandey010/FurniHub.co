@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CSS/LoginSignup.css";
+import { useNavigate } from "react-router-dom";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from '../Components/firebase'; // Import Firebase configuration
@@ -8,6 +9,7 @@ const LoginSignup = () => {
   const [state, setState] = useState("Login");
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
   const [user, setUser] = useState(null); // Define setUser function
+  const navigate = useNavigate();
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,6 +29,7 @@ const LoginSignup = () => {
         },
         body: JSON.stringify({ idToken }),
       });
+      navigate("/")
     } catch (error) {
       console.error('Google login error:', error);
     }
@@ -45,8 +48,8 @@ const LoginSignup = () => {
       if (dataObj.success) {
         localStorage.setItem('auth-token', dataObj.token);
         setUser(dataObj.user); // Set user details in the state
-        window.location.replace("/");
-      } else {
+        navigate("/")
+            } else {
         alert(dataObj.errors);
       }
     } catch (error) {
@@ -68,7 +71,7 @@ const LoginSignup = () => {
       const dataObj = await response.json();
       if (dataObj.success) {
         localStorage.setItem('auth-token', dataObj.token);
-        window.location.replace("/");
+        navigate("/")
       } else {
         alert(dataObj.errors);
       }

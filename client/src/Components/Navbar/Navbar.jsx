@@ -56,12 +56,12 @@ const Navbar = () => {
             <span className="hidden md:block">FurniHub.co</span>
           </Link>
           <ul className="hidden md:flex md:space-x-4 ml-8 text-white">
-            <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Shop</Link></li>
+            <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Home</Link></li>
             {/* Dropdown for Categories */}
             <li>
               <div className="relative">
                 <button onClick={toggleCategoryMenu} className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">
-                  Products
+                  Products by Category
                 </button>
                 {categoryMenu && (
                   <ul className="absolute top-full left-0 bg-white shadow-lg py-2 rounded-md">
