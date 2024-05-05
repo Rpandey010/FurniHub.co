@@ -16,6 +16,3 @@ Welcome to FurniHub, your go-to destination for buying and selling secondhand fu
 
 To get started with FurniHub, simply [sign up](#) for an account or [login](#) if you're already a member. Once logged in, you can start exploring listings, adding items to your cart, and making purchases. If you're looking to sell, you can easily create listings for your furniture items and reach potential buyers in our thriving community.
 
-## Contributing
-
-We welcome contributions from the community to help improve FurniHub. Whether it's bug fixes, feature enhancements, or feedback on user experience, your input is valuable to us. Feel free to open an [issue](https://github.com/furnihub/furnihub/issues) or submit a [pull request](https://github.com/furnihub/furnihub/pulls) on our GitHub repository.
