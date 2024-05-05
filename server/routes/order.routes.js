@@ -11,3 +11,18 @@ router.post('/', orderController.saveOrder);
 router.get('/history', orderController.getOrderHistory);
 
 module.exports = router;
+
+// const express = require('express');
+// const router = express.Router();
+// const verifyUserAuthorization = require('../middleware/verifyUserAuthorization');
+// const orderController = require('../controller/order.controller');
+
+// // Save an order route
+// router.post('/', verifyUserAuthorization, orderController.saveOrder);
+
+// // Get order history route
+// router.get('/history', verifyUserAuthorization, orderController.getOrderHistory);
+
+// // Other routes...
+
+// module.exports = router;
