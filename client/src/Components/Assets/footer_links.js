@@ -5,10 +5,10 @@ const FOOTER_LINKS = [
     links: [
       { label: "About Us", url: "/About-us" }, // Update link to use relative URL
       "Categories",
-      "Exchange Policy",
+      // { label:"Exchange Policy", url: "/privacy-policy" },
       "Order Now",
       { label: "FAQ", url: "/FAQ"},
-      "Privacy Policy",
+      { label: "Privacy Policy", url: "/privacy-policy" },
     ],
   },
   {
