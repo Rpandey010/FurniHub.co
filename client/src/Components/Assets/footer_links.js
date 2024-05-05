@@ -7,7 +7,7 @@ const FOOTER_LINKS = [
       "Categories",
       "Exchange Policy",
       "Order Now",
-      "FAQ",
+      { label: "FAQ", url: "/FAQ"},
       "Privacy Policy",
     ],
   },
