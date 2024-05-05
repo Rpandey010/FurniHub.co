@@ -56,7 +56,7 @@ const Navbar = () => {
             <span className="hidden md:block">FurniHub.co</span>
           </Link>
           <ul className="hidden md:flex md:space-x-4 ml-8 text-white">
-            <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Shop</Link></li>
+            <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Home</Link></li>
             {/* Dropdown for Categories */}
             <li>
               <div className="relative">
