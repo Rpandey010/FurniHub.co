@@ -14,6 +14,7 @@ import AddProduct from "./Components/AddProduct/AddProduct";
 import ListProduct from "./Components/ListProduct/ListProduct";
 import OrderHistory from "./Components/History/orderHistory";
 import Aboutus from "./Components/AboutUs/Aboutus";
+import FAQ from "./Components/FAQ/FAQ";
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/list-product" element={<ListProduct />} />
           <Route path="/login" element={<LoginSignup/>} />
           <Route path="/About-us" element={<Aboutus />} />
+          <Route path="/FAQ" element={<FAQ/>} />
         </Routes>
         <Footer />
       </Router>
