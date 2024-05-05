@@ -23,8 +23,9 @@ const orderSchema = new Schema({
     pincode: { type: String, required: true },
     country: { type: String, required: true }
   },
-  orderId: { type: String, required: true }, // Add orderId field
+  orderId: { type: String, required: true },
+  fullName: { type: String, required: true },
+  emailID: { type: String, required: true },  
   createdAt: { type: Date, default: Date.now }
 });
-
 module.exports = mongoose.model('Order', orderSchema);
