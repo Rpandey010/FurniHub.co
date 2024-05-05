@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8; /* Light blue color */
+  padding-top: 60px; /* Adjusted padding to provide space for navbar */
+}
+
+.addproduct {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto; /* Adjusted margin */
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.addproduct-itemfield {
+  margin-bottom: 20px;
+}
+
+.addproduct-itemfield p {
+  margin-bottom: 8px;
+}
+
+.addproduct-itemfield input,
+.addproduct-itemfield select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  border-radius: 6px;
+  padding: 0 15px;
+  border: 1px solid #c3c3c3;
+  outline: none;
+  color: #7b7b7b;
+  font-family: Poppins;
+  font-size: 14px;
+}
+
+.addproduct-price {
+  display: flex;
+  gap: 40px;
+}
+
+.add-product-selector {
+  width: 100%;
+  height: 50px;
+  font-size: 14px;
+  color: #7b7b7b;
+  border: 1px solid #c3c3c3;
+  border-radius: 6px;
+}
+
+.addproduct-thumbnail-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.addproduct-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 6px;
+  background: #6079ff;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 800px) {
+  .addproduct {
+    margin: 20px auto;
+  }
+
+  .addproduct-price {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .addproduct-itemfield div {
+    width: 100%;
+  }
+}
+
+/* Previous CSS styles... */
