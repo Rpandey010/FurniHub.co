@@ -16,6 +16,7 @@ import OrderHistory from "./Components/History/orderHistory";
 import Aboutus from "./Components/AboutUs/Aboutus";
 import FAQ from "./Components/FAQ/FAQ";
 import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyPolicy";
+import OrderSuccessfully from "./Components/OrderSuccessful/ordersuccessful";
 
 function App() {
 
@@ -38,6 +39,8 @@ function App() {
           <Route path="/About-us" element={<Aboutus />} />
           <Route path="/FAQ" element={<FAQ/>} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/order-success" element={<OrderSuccessfully />} />
+
         </Routes>
         <Footer />
       </Router>
