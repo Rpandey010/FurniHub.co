@@ -19,6 +19,7 @@ const AddProduct = () => {
     description: "",
   });
 
+
   const AddProduct = async () => {
     let dataObj;
     let product = productDetails;
@@ -60,9 +61,18 @@ const AddProduct = () => {
   }
 };
 
+  const validateEmail = (value) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(value)) {
+      alert('Please enter a valid email address');
+      return false;
+    }
+    return true;
+  };
+  
   const changeHandler = (e) => {
-    console.log(e);
-    setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setProductDetails({ ...productDetails, [name]: value });
   };
 
   const imageHandler = (e) => {
@@ -161,6 +171,8 @@ const AddProduct = () => {
           placeholder="Enter length (inch)"
         />
       </div>
+
+      {/* desciption  */}
       <div className="addproduct-itemfield">
         <p>Description</p>
         <textarea
@@ -172,18 +184,7 @@ const AddProduct = () => {
           placeholder="Enter description"
         />
       </div>
-      <div className="addproduct-itemfield">
-        <p>Email ID</p>
-        <input
-          type="email"
-          name="emailID"
-          value={productDetails.emailID}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
-          placeholder="Enter email ID"
-        />
-      </div>
+
       <div className="addproduct-itemfield">
         <p>Seller Name</p>
         <input
@@ -196,6 +197,20 @@ const AddProduct = () => {
           placeholder="Enter seller name"
         />
       </div>
+
+      
+      <div className="addproduct-itemfield">
+        <p>Email ID</p>
+        <input
+          type="email"
+          name="emailID"
+          value={productDetails.emailID}
+          onChange={changeHandler}
+          onBlur={(e) => validateEmail(e.target.value)}
+          placeholder="Enter email ID"
+        />
+      </div>
+
       <div className="addproduct-itemfield">
         <p>Address</p>
         <input
