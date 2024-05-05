@@ -1,0 +1,47 @@
+/* RelatedProducts.css */
+.related-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0 80px; /* Adjusted padding */
+  }
+  
+  .related-products h1 {
+    color: #333; /* Darkened the text color */
+    font-size: 36px; /* Reduced font size */
+    font-weight: 700; /* Increased font weight */
+    margin-bottom: 0; /* Removed default margin */
+  }
+  
+  .separator {
+    width: 200px; /* Increased width */
+    height: 2px;
+    background: #ccc; /* Changed separator color to a lighter shade */
+    border: none;
+  }
+  
+  .related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin-top: 20px; /* Adjusted margin */
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 600px) {
+    .related-products h1 {
+      font-size: 24px; /* Reduced font size further */
+    }
+  
+    .separator {
+      width: 150px; /* Reduced width */
+    }
+  
+    .related-products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted grid columns */
+      gap: 15px; /* Reduced gap */
+    }
+  }
+  
