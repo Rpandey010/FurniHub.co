@@ -3,6 +3,7 @@ import cross_icon from "../Assets/cart_cross_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 import Payment from "../Payment/payment";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CartItems = () => {
   const { products, cartItems, removeFromCart, getTotalCartAmount } = useContext(ShopContext);
@@ -27,6 +28,7 @@ const CartItems = () => {
     country: ""
   });
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTotalAmount(getTotalCartAmount());
@@ -74,14 +76,31 @@ const CartItems = () => {
       };
   
       const response = await axios.post("http://localhost:4000/orders", orderData);
-  
+      navigate("/order-success", {
+      state: {
+        orderId,
+        products: Object.keys(cartItems)
+          .filter(productId => cartItems[productId] >= 1 && products[productId]) // Check if product exists
+          .map(productId => ({
+            name: products[productId].name, // Access name if product exists
+            quantity: cartItems[productId],
+            price: totalAmount
+          })),
+        billingAddress,
+        shippingAddress,
+        totalPrice: totalAmount,
+        fullName,
+        emailID
+      }
+    });
+      
       console.log("Order submitted successfully:", response.data);
     } catch (error) {
       console.error("Error submitting order:", error);
     }
   };
 
-  
+
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
