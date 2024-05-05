@@ -12,11 +12,13 @@ import LoginSignup from "./Pages/LoginSignup";
 import Search from "./Components/Search/search";
 import AddProduct from "./Components/AddProduct/AddProduct";
 import ListProduct from "./Components/ListProduct/ListProduct";
+import OrderHistory from "./Components/History/orderHistory";
+import Aboutus from "./Components/AboutUs/Aboutus";
 
 function App() {
 
   return (
-    <div>
+    <div className="m-0">
       <Router>
         <Navbar />
         <Routes>
@@ -27,9 +29,11 @@ function App() {
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/search" element={<Search />} /> {/* Define /search route at the same level as other routes */}
           <Route path="/cart" element={<Cart />} />
+          <Route path="/order-history" element={<OrderHistory />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/list-product" element={<ListProduct />} />
           <Route path="/login" element={<LoginSignup/>} />
+          <Route path="/About-us" element={<Aboutus />} />
         </Routes>
         <Footer />
       </Router>
