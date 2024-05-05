@@ -3,7 +3,24 @@ import Banner from '../Assets/banner.png';
 
 const Offer = () => {
   return (
-    <section className="bg-gray-100 py-16 relative overflow-hidden">
+    <>
+      <section className="bg-gray-900 py-3 text-white mt-0 text-center">
+          <h3 className="text-3xl font-bold mb-4 leading-tight">Transform Your Living Space into a Haven of Comfort and Style</h3> 
+         <iframe
+        width="100%"
+        height="640"
+        frameborder="0"
+        allow="xr-spatial-tracking; gyroscope; accelerometer"
+        allowfullscreen
+        src="https://kuula.co/share/5H7Z7?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1"
+      ></iframe>
+
+      </section>
+     
+    <section className="bg-gray-900 py-20 text-white mt-0 text-center">
+    </section>
+
+    <section className="bg-gray-100 py-16 relative overflow-hidden"  style={{ marginTop: '-129px' }}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img src={Banner} alt="Background" className="object-cover w-full h-full" />
@@ -31,6 +48,7 @@ const Offer = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
