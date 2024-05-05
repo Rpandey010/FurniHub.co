@@ -27,7 +27,7 @@ const Offer = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl  relative z-10 text-black pl-8"> {/* Adjusted left padding */}
+      <div id="offers" className="max-w-4xl  relative z-10 text-black pl-8"> {/* Adjusted left padding */}
         <div className="max_padd_container text-left"> {/* Align content to the left */}
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-600">Exclusive Holi Sale!</h2>
           <p className="text-lg md:text-xl mb-8">Limited Time Offer - <span className="font-bold text-blue-600">USE CODE: HOLI25</span></p>
