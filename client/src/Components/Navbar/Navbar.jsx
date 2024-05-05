@@ -10,9 +10,10 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const [menu, setMenu] = useState(false);
+  const [categoryMenu, setCategoryMenu] = useState(false);
   const { getTotalCartItems } = useContext(ShopContext);
   const dropdownRef = useRef(null);
+  const [menu, setMenu] = useState(false); // or any initial value you want
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -41,6 +42,10 @@ const Navbar = () => {
     }
   };
 
+  const toggleCategoryMenu = () => {
+    setCategoryMenu(!categoryMenu);
+  };
+
   return (
     <nav className='bg-gray-800 shadow-md py-4 fixed w-full top-0 z-50'>
       <div className="container mx-auto flex justify-between items-center px-4">
@@ -52,9 +57,24 @@ const Navbar = () => {
           </Link>
           <ul className="hidden md:flex md:space-x-4 ml-8 text-white">
             <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Shop</Link></li>
-            <li><Link to='/mens' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Men</Link></li>
-            <li><Link to='/womens' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Women</Link></li>
-            <li><Link to='/kids' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Kids</Link></li>
+            {/* Dropdown for Categories */}
+            <li>
+              <div className="relative">
+                <button onClick={toggleCategoryMenu} className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">
+                  Products
+                </button>
+                {categoryMenu && (
+                  <ul className="absolute top-full left-0 bg-white shadow-lg py-2 rounded-md">
+                    <li><Link to='/table' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Tables</Link></li>
+                    <li><Link to='/chair' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Chairs</Link></li>
+                    <li><Link to='/almirah' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Almirahs</Link></li>
+                    <li><Link to='/bed' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Beds</Link></li>
+                    <li><Link to='/miscellaneous' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Miscellaneous</Link></li>
+                    {/* Add more categories as needed */}
+                  </ul>
+                )}
+              </div>
+            </li>
           </ul>
         </div>
         
@@ -100,15 +120,15 @@ const Navbar = () => {
               ) : (
                 <Link to='/login' className="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Login</Link>
               )}
-            <Link to="/cart" className="relative flex items-center">
-              <FaShoppingCart className="text-white" style={{ fontSize: '1.5rem' }} /> {/* Increased icon size */}
-              {getTotalCartItems() > 0 && (
-                <div className="bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white absolute -top-1 -right-1 animate-pulse">
-                  <span className="text-xs font-bold">{getTotalCartItems()}</span>
-                </div>
-              )}
-            </Link>
-          </div>
+              <Link to="/cart" className="relative flex items-center">
+                <FaShoppingCart className="text-white" style={{ fontSize: '1.5rem' }} /> {/* Increased icon size */}
+                {getTotalCartItems() > 0 && (
+                  <div className="bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white absolute -top-1 -right-1 animate-pulse">
+                    <span className="text-xs font-bold">{getTotalCartItems()}</span>
+                  </div>
+                )}
+              </Link>
+            </div>
         </div>
       </div>
     </nav>

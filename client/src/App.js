@@ -26,9 +26,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Shop gender="all" />} />
-          <Route path="/mens" element={<ShopCategory banner={men_banner} category="men" />} />
-          <Route path="/womens" element={<ShopCategory banner={women_banner} category="women" />} />
-          <Route path="/kids" element={<ShopCategory banner={kid_banner} category="kid" />} />
+          <Route path="/table" element={<ShopCategory banner={men_banner} category="table" />} />
+          <Route path="/chair" element={<ShopCategory banner={women_banner} category="chair" />} />
+          <Route path="/almirah" element={<ShopCategory banner={kid_banner} category="almirah" />} />
+          <Route path="/bed" element={<ShopCategory banner={kid_banner} category="bed" />} />
+          <Route path="/miscellaneous" element={<ShopCategory banner={kid_banner} category="miscellaneous" />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/search" element={<Search />} /> {/* Define /search route at the same level as other routes */}
           <Route path="/cart" element={<Cart />} />

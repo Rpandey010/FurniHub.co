@@ -86,9 +86,9 @@ const AddProduct = () => {
       </div>
       <div className="addproduct-price">
         <div className="addproduct-itemfield">
-          <p>Price</p>
+          <p>Price (INR)</p>
           <input
-            type="text"
+            type="number"
             name="old_price"
             value={productDetails.old_price}
             onChange={(e) => {
@@ -98,9 +98,9 @@ const AddProduct = () => {
           />
         </div>
         <div className="addproduct-itemfield">
-          <p>Offer Price</p>
+          <p>Offer Price (INR)</p>
           <input
-            type="text"
+            type="number"
             name="new_price"
             value={productDetails.new_price}
             onChange={(e) => {
@@ -118,45 +118,47 @@ const AddProduct = () => {
           className="add-product-selector"
           onChange={changeHandler}
         >
-          <option value="women">Women</option>
-          <option value="men">Men</option>
-          <option value="kid">Kid</option>
+          <option value="table">Tables</option>
+          <option value="chair">Chairs</option>
+          <option value="almirah">Almirahs</option>
+          <option value="bed">Beds</option>
+          <option value="miscellaneous">Miscellaneous</option>
         </select>
       </div>
       <div className="addproduct-itemfield">
         <p>Height</p>
         <input
-          type="text"
+          type="number"
           name="height"
           value={productDetails.height}
           onChange={(e) => {
             changeHandler(e);
           }}
-          placeholder="Enter height"
+          placeholder="Enter height (inch)"
         />
       </div>
       <div className="addproduct-itemfield">
         <p>Width</p>
         <input
-          type="text"
+          type="number"
           name="width"
           value={productDetails.width}
           onChange={(e) => {
             changeHandler(e);
           }}
-          placeholder="Enter width"
+          placeholder="Enter width (inch)"
         />
       </div>
       <div className="addproduct-itemfield">
         <p>Length</p>
         <input
-          type="text"
+          type="number"
           name="length"
           value={productDetails.length}
           onChange={(e) => {
             changeHandler(e);
           }}
-          placeholder="Enter length"
+          placeholder="Enter length (inch)"
         />
       </div>
       <div className="addproduct-itemfield">
