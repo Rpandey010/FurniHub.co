@@ -15,7 +15,11 @@ const NewsLetter = () => {
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        if (response.status === 400) {
+          throw new Error('This email is already subscribed.');
+        } else {
+          throw new Error('Network response was not ok');
+        }
       }
       return response.text();
     })
@@ -28,6 +32,7 @@ const NewsLetter = () => {
     })
     .catch((error) => {
       console.error('Error:', error);
+      alert(error.message); // Display the error message
     });
   };
 
