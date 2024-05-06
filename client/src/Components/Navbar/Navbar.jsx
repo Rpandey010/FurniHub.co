@@ -5,6 +5,7 @@ import logo from '../Assets/furniHub.co.png';
 import { ShopContext } from '../../Context/ShopContext'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { Link as ScrollLink } from 'react-scroll';
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -51,12 +52,27 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Left Side */}
         <div className="flex items-center justify-start">
-          <Link to='/' className="flex items-center text-white font-semibold text-lg">
+
+          <ScrollLink
+            to="welcomeSection"
+            smooth={true}
+            duration={500}
+            className="flex items-center text-white font-semibold text-lg cursor-pointer">
             <img src={logo} alt="logo" className="h-10 mr-2" />
             <span className="hidden md:block">FurniHub.co</span>
-          </Link>
+          </ScrollLink>
+
           <ul className="hidden md:flex md:space-x-4 ml-8 text-white">
-            <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Home</Link></li>
+            
+            <li>
+              <ScrollLink
+                to="welcomeSection"
+                smooth={true}
+                duration={500}
+                className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold cursor-pointer">
+                Home
+              </ScrollLink>
+            </li>
             {/* Dropdown for Categories */}
             <li>
               <div className="relative">
