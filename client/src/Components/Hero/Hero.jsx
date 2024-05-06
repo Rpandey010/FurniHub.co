@@ -3,9 +3,11 @@ import { MdOutlineLocalOffer, MdShoppingCart } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import banner from "../Assets/Sofa (1).png";
 import { Link } from 'react-scroll';
+import { Element } from 'react-scroll';
 
 const Hero = () => {
   return (
+    <Element name="welcomeSection">
        <section className="bg-gray-900 py-16 text-white mt-0 text-left">
       <div className="container mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between px-4 lg:px-0">
         <div className="max-w-lg lg:mr-16">
@@ -23,7 +25,7 @@ const Hero = () => {
               to="story"
               smooth={true}
               duration={500}
-              className="bg-blue-500 text-white rounded-full px-8 py-3 block mb-4 hover:bg-blue-600 transition duration-300 flex items-center justify-center"
+              className="bg-blue-500 text-white rounded-full px-8 py-3 block mb-4 hover:bg-blue-600 transition duration-300 flex items-center justify-center cursor-pointer"
             >
               <MdShoppingCart className="text-3xl mr-2" /> <strong>Shop Now</strong>
             </Link>
@@ -34,7 +36,7 @@ const Hero = () => {
               smooth={true}
               duration={500}
               offset={-90}
-              className="bg-yellow-400 text-gray-900 rounded-full px-8 py-3 block mb-4 hover:bg-yellow-500 transition duration-300 flex items-center justify-center"
+              className="bg-yellow-400 text-gray-900 rounded-full px-8 py-3 block mb-4 hover:bg-yellow-500 transition duration-300 flex items-center justify-center cursor-pointer"
             >
               <MdOutlineLocalOffer className="text-3xl mr-2" /> <strong>View Offers</strong>
             </Link>
@@ -46,7 +48,9 @@ const Hero = () => {
         </div>
       </div>
     </section>
+    </Element>
   );
 };
+
 
 export default Hero;
