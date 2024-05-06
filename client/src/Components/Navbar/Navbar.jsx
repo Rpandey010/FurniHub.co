@@ -61,7 +61,7 @@ const Navbar = () => {
             <li>
               <div className="relative">
                 <button onClick={toggleCategoryMenu} className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">
-                  Products by Category
+                  Products
                 </button>
                 {categoryMenu && (
                   <ul className="absolute top-full left-0 bg-white shadow-lg py-2 rounded-md">
@@ -75,6 +75,7 @@ const Navbar = () => {
                 )}
               </div>
             </li>
+            <li><Link to='/about-us' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">About Us</Link></li>
           </ul>
         </div>
         
