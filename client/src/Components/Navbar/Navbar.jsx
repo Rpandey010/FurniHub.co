@@ -59,7 +59,7 @@ const Navbar = () => {
             <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Home</Link></li>
             {/* Dropdown for Categories */}
             <li>
-              <div className="relative">
+              <div className="relative" onMouseEnter={() => setCategoryMenu(true)} onMouseLeave={() => setCategoryMenu(false)}>
                 <button onClick={toggleCategoryMenu} className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">
                   Products
                 </button>
