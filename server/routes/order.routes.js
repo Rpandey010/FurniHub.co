@@ -10,9 +10,12 @@ router.post('/', orderController.saveOrder);
 // Route to fetch order history
 router.get('/history', orderController.getOrderHistory);
 
+// Route to check email
+router.post('/check-email', orderController.checkEmail);
+
 module.exports = router;
 
-// const express = require('express');
+// const express = require('express');s
 // const router = express.Router();
 // const verifyUserAuthorization = require('../middleware/verifyUserAuthorization');
 // const orderController = require('../controller/order.controller');

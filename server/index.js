@@ -18,12 +18,21 @@ const cartRouter = require('./routes/cart.routes');
 const authRoutes = require('./routes/auth.routes'); 
 const paymentRoutes = require('./routes/payment.route');
 const orderRoutes = require('./routes/order.routes');
+// const Users = require('./model/user.model');
+
+// const admin = require('firebase-admin');
+// const serviceAccount = require('./furnihub-52977-firebase-adminsdk-qf5i9-bc6404b042.json');
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
 
 app.use(express.json());
 app.use(cors());
 
 // Database Connection With MongoDB
 mongoose.connect("mongodb+srv://aryansharma21:aryanrandi@cluster0.0qhzcry.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/e-commerce");
+
 
 
 //Image Storage Engine 
@@ -79,6 +88,20 @@ app.get("/", (req, res) => {
 
 // Use cart routes
 app.use('/cart', cartRouter);
+
+app.post('/orders/check-email', async (req, res) => {
+  const { email } = req.body;
+  try {
+      const user = await Users.findOne({ email: email });
+      if (!user) {
+          return res.status(404).json({ success: false, message: "Email ID not found." });
+      }
+      return res.json({ success: true, message: "Email ID found." });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ success: false, message: error.message });
+  }
+});
 
 // Error Handling middleware
 app.listen(port, (error) => {

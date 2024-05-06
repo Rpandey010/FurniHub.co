@@ -2,6 +2,7 @@
 
 const Order = require('../model/order.model');
 const { sendEmailWithOrderHistory } = require('../mail/order.mail');
+const Users = require('../model/user.model');
 
 exports.saveOrder = async (req, res) => {
   try {
@@ -46,3 +47,18 @@ exports.getOrderHistory = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+exports.checkEmail = async (req, res) => {
+  const { email } = req.body;
+  try {
+      const user = await Users.findOne({ email: email });
+      if (!user) {
+          return res.status(404).json({ success: false, message: "Email ID not found." });
+      }
+      return res.json({ success: true, message: "Email ID found." });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
