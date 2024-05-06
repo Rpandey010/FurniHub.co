@@ -145,7 +145,7 @@ const Navbar = () => {
                   )}
                 </div>
               ) : (
-                <Link to='/login' className="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Login</Link>
+                <Link to='/login' className="text-slate-50 hover:text-blue-600 transition duration-300 ease-in-out">Login</Link>
               )}
               <Link to="/cart" className="relative flex items-center">
                 <FaShoppingCart className="text-white" style={{ fontSize: '1.5rem' }} /> {/* Increased icon size */}
