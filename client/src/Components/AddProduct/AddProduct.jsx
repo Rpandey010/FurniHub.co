@@ -19,7 +19,8 @@ const AddProduct = () => {
     description: "",
   });
 
-
+// http://localhost:4000
+  
   const AddProduct = async () => {
     let dataObj;
     let product = productDetails;
@@ -27,7 +28,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch("http://localhost:4000/upload", {
+    await fetch("https://furnihub-co-server.onrender.com/upload", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -42,7 +43,7 @@ const AddProduct = () => {
     if (dataObj.success) {
       product.image = dataObj.image_url;
       console.log(product);
-      await fetch("http://localhost:4000/products/addproduct", {
+      await fetch("https://furnihub-co-server.onrender.com/products/addproduct", {
         method: "POST",
         headers: {
           Accept: "application/json",
