@@ -18,13 +18,13 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch("http://localhost:4000/products/allproducts")
+    fetch("https://furnihub-co-server.onrender.com/products/allproducts")
           .then((res) => res.json()) 
           .then((data) => setProducts(data))
 
     if(localStorage.getItem("auth-token"))
     {
-      fetch('http://localhost:4000/getcart', {
+      fetch('https://furnihub-co-server.onrender.com/getcart', {
       method: 'POST',
       headers: {
         Accept:'application/form-data',
@@ -64,7 +64,7 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if(localStorage.getItem("auth-token"))
     {
-      fetch('http://localhost:4000/addtocart', {
+      fetch('https://furnihub-co-server.onrender.com/addtocart', {
       method: 'POST',
       headers: {
         Accept:'application/form-data',
@@ -82,7 +82,7 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if(localStorage.getItem("auth-token"))
     {
-      fetch('http://localhost:4000/removefromcart', {
+      fetch('https://furnihub-co-server.onrender.com/removefromcart', {
       method: 'POST',
       headers: {
         Accept:'application/form-data',

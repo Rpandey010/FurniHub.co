@@ -9,7 +9,7 @@ const Search = () => {
   useEffect(() => {
     const query = new URLSearchParams(location.search).get('query');
     if (query) {
-      axios.get(`http://localhost:4000/products/search?name=${encodeURIComponent(query)}`)
+      axios.get(`https://furnihub-co-server.onrender.com/products/search?name=${encodeURIComponent(query)}`)
         .then(response => {
           setSearchResults(response.data);
         })

@@ -9,7 +9,7 @@ const ListProduct = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/products/allproductsbyuser?emailID=${emailID}`);
+      const response = await fetch(`https://furnihub-co-server.onrender.com/products/allproductsbyuser?emailID=${emailID}`);
       const data = await response.json();
       setAllProducts(data);
     } catch (error) {
@@ -23,7 +23,7 @@ const ListProduct = () => {
 
   const removeProduct = async (id) => {
     try {
-      await fetch('http://localhost:4000/products/removeproduct', {
+      await fetch('https://furnihub-co-server.onrender.com/products/removeproduct', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -39,7 +39,7 @@ const ListProduct = () => {
 
   const updateProduct = async (id, newName, newPrice, newDescription) => {
     try {
-      await fetch('http://localhost:4000/products/updateproduct', {
+      await fetch('https://furnihub-co-server.onrender.com/products/updateproduct', {
         method: 'PUT',
         headers: {
           Accept: 'application/json',

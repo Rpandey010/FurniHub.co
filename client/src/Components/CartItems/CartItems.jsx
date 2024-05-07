@@ -62,7 +62,7 @@ const CartItems = () => {
 };
   // const checkEmailExists = async (email) => {
   //   try {
-  //     const response = await axios.post('http://localhost:4000/orders/check-email', { email });
+  //     const response = await axios.post('https://furnihub-co-server.onrender.com/orders/check-email', { email });
   //     if (!response.data.success) {
   //       setEmailCheckStatus("error"); // Set email check status to error if email not found
   //       setEmailCheckError(response.data.message); // Set error message if email not found
@@ -100,7 +100,7 @@ const CartItems = () => {
       };
   
       // Save order data to the database
-      const response = await axios.post("http://localhost:4000/orders", orderData);
+      const response = await axios.post("https://furnihub-co-server.onrender.com/orders", orderData);
       navigate("/order-success", {
         state: {
           orderId,

@@ -22,7 +22,7 @@ const LoginSignup = () => {
       const result = await firebase.auth().signInWithPopup(provider);
       const idToken = await result.user.getIdToken();
       // Send idToken to backend for Firebase authentication
-      fetch('http://localhost:4000/auth/firebase-login', {
+      fetch('https://furnihub-co-server.onrender.com/auth/firebase-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const LoginSignup = () => {
 
   const login = async () => {
     try {
-      const response = await fetch('http://localhost:4000/login', {
+      const response = await fetch('https://furnihub-co-server.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const LoginSignup = () => {
 
   const signup = async () => {
     try {
-      const response = await fetch('http://localhost:4000/signup', {
+      const response = await fetch('https://furnihub-co-server.onrender.com/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
