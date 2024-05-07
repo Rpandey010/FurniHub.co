@@ -22,7 +22,7 @@ const LoginSignup = () => {
       const result = await firebase.auth().signInWithPopup(provider);
       const idToken = await result.user.getIdToken();
       // Send idToken to backend for Firebase authentication
-      fetch('/auth/firebase-login', {
+      fetch('http://localhost:4000/auth/firebase-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

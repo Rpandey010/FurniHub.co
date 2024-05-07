@@ -59,33 +59,28 @@ const CartItems = () => {
 
   const handleEmailChange = (e) => {
     setEmailID(e.target.value);
-    setEmailCheckStatus("pending"); // Set email check status to pending
-    setEmailCheckError(null); // Clear previous email check error
-    // Perform email check
-    checkEmailExists(e.target.value);
-  };
-  
-  const checkEmailExists = async (email) => {
-    try {
-      const response = await axios.post('http://localhost:4000/orders/check-email', { email });
-      if (!response.data.success) {
-        setEmailCheckStatus("error"); // Set email check status to error if email not found
-        setEmailCheckError(response.data.message); // Set error message if email not found
-      } else {
-        setEmailCheckStatus("success"); // Set email check status to success if email found
-      }
-    } catch (error) {
-      setEmailCheckStatus("error"); // Set email check status to error if an error occurred
-      setEmailCheckError("An error occurred while checking the email."); // Set generic error message
-      console.error(error);
-    }
-  };
+};
+  // const checkEmailExists = async (email) => {
+  //   try {
+  //     const response = await axios.post('http://localhost:4000/orders/check-email', { email });
+  //     if (!response.data.success) {
+  //       setEmailCheckStatus("error"); // Set email check status to error if email not found
+  //       setEmailCheckError(response.data.message); // Set error message if email not found
+  //     } else {
+  //       setEmailCheckStatus("success"); // Set email check status to success if email found
+  //     }
+  //   } catch (error) {
+  //     setEmailCheckStatus("error"); // Set email check status to error if an error occurred
+  //     setEmailCheckError("An error occurred while checking the email."); // Set generic error message
+  //     console.error(error);
+  //   }
+  // };
 
   const handleOrderSubmit = async (orderId) => { 
-    // Check if email check status is not error
-    if (emailCheckStatus === "error") {
-      return;
-    }
+    // // Check if email check status is not error
+    // if (emailCheckStatus === "error") {
+    //   return;
+    // }
   
     try {
       const orderData = {
@@ -201,8 +196,8 @@ const CartItems = () => {
                       placeholder="Enter your email ID"
                       className="w-full border border-gray-300 rounded-md px-4 py-2 mb-4"
                     />
-                    {emailCheckStatus === "error" && <p className="text-red-500">{emailCheckError}</p>} {/* Display email check error */}
-                    <button disabled={emailCheckStatus === "pending" || emailCheckStatus === "error"} className="bg-blue-500 text-white py-2 px-4 w-full rounded-md" onClick={() => setCurrentStep(2)}>Next</button>
+                    {/* {emailCheckStatus === "error" && <p className="text-red-500">{emailCheckError}</p>} Display email check error */}
+                    <button className="bg-blue-500 text-white py-2 px-4 w-full rounded-md" onClick={() => setCurrentStep(2)}>Next</button>
                   </div>
                 )}
                 {currentStep === 2 && (

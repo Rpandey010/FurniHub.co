@@ -81,15 +81,25 @@ const signup = async (req, res) => {
 };
 
 const googleLogin = async (req, res) => {
-    const { idToken, username } = req.body; // Assuming the username is sent along with the request
+    const { idToken, username } = req.body;
     try {
         const decodedToken = await admin.auth().verifyIdToken(idToken);
+        console.log(decodedToken); // Log the decoded token
         const { uid, email } = decodedToken;
+
         let user = await Users.findOne({ uid: uid });
+
         if (!user) {
             user = new Users({ uid: uid, email: email, username: username });
-            await user.save();
+        } else {
+            if (!user.email) {
+                user.email = email;
+            }
         }
+
+        // Save the user and log any errors
+        await user.save().catch(err => console.error(err));
+
         return res.json({ success: true, uid: uid, email: email, username: username });
     } catch (error) {
         console.error(error);
