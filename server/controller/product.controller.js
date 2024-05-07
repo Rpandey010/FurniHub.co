@@ -93,3 +93,22 @@ exports.getAllProductsByUser = async (req, res) => {
       res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 };
+
+exports.updateProduct = async (req, res) => {
+  const { id, name, new_price, address, description } = req.body;
+  try {
+    const updatedProduct = await Product.findOneAndUpdate(
+      { id: id },
+      { $set: { name: name, new_price: new_price, address: address, description: description } },
+      { new: true }
+    );
+    if (!updatedProduct) {
+      return res.status(404).json({ success: false, error: "Product not found" });
+    }
+    res.json({ success: true, updatedProduct });
+  } catch (error) {
+    console.error("Error occurred while updating product:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+};
+

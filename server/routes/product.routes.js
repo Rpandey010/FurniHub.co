@@ -23,4 +23,6 @@ router.get("/search", productController.searchProductByName);
 // Get all products by user email ID
 router.get("/allproductsbyuser", productController.getAllProductsByUser); // Add this route
 
+router.put("/updateproduct", productController.updateProduct);
+
 module.exports = router;
