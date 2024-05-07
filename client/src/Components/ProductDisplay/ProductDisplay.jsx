@@ -23,14 +23,7 @@ const ProductDisplay = (props) => {
       </div>
       <div className="productdisplay-right">
         <h1>{product.name}</h1>
-        {/* <div className="productdisplay-right-stars">
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_dull_icon} alt="" />
-          <p>(122)</p>
-        </div> */}
+
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-old">₹{product.old_price}</div>
           <div className="productdisplay-right-price-new">₹{product.new_price}</div>
