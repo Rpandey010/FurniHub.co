@@ -13,7 +13,7 @@ const AddProduct = () => {
     address: "",
     height: "",
     width: "",
-    length: "",
+    // length: "",
     emailID: "", // Added emailID field
     sellerName: "", // Added sellerName field
     description: "",
@@ -159,7 +159,7 @@ const AddProduct = () => {
           placeholder="Enter width (inch)"
         />
       </div>
-      <div className="addproduct-itemfield">
+      {/* <div className="addproduct-itemfield">
         <p>Length</p>
         <input
           type="number"
@@ -170,10 +170,10 @@ const AddProduct = () => {
           }}
           placeholder="Enter length (inch)"
         />
-      </div>
+      </div> */}
 
       {/* desciption  */}
-      <div className="addproduct-itemfield">
+      <div className="addproduct-desciption">
         <p>Description</p>
         <textarea
           name="description"

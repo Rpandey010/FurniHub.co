@@ -38,7 +38,7 @@ const Payment = ({ cartItems, getTotalCartAmount, onSubmitOrder }) => {
       amount: order.amount,
       currency: order.currency,
       order_id: order.id,
-      name: "Zilean(Aryan)",
+      name: "FurniHub.co",
       description: "Payment for your order",
       handler: async function (response) {
         // Step 3: Verify payment on your server

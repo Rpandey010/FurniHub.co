@@ -21,7 +21,7 @@ const OrderSuccessfully = () => {
       setShowConfetti(true);
       setTimeout(() => {
         setShowConfetti(false);
-      }, 10000); // Increased duration to 10 seconds
+      }, 4000); // Increased duration to 10 seconds
     }
   }, [location.state]);
 
@@ -43,7 +43,7 @@ const OrderSuccessfully = () => {
         <div className="receipt-left">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-semibold text-gray-800">Order Receipt</h1>
-            <p className="text-lg text-gray-600">Thank you for your purchase!</p>
+            <p className="text-lg text-gray-600">Your order has been placed!</p>
             <p className="text-sm text-gray-600">Date: {currentDate}</p>
           </div>
           <div className="border-t border-b border-gray-200 py-4 mb-4">

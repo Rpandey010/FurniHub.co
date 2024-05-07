@@ -36,10 +36,10 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  length: {
-    type: Number,
-    required: true,
-  },
+  // length: {
+  //   type: Number,
+  //   required: true,
+  // },
   date: {
     type: Date,
     default: Date.now,

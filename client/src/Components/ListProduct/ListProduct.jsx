@@ -94,8 +94,8 @@ const ListProduct = () => {
           <div key={product.id} className="grid grid-cols-1 md:grid-cols-7 gap-4 items-center mb-4 bg-white rounded-lg shadow-md p-4">
             <img className="w-16 h-16 md:w-24 md:h-24 object-cover rounded" src={product.image} alt={product.name} />
             <p >{product.name}</p>
-            <p >${product.old_price}</p>
-            <p>{product.new_price}</p>
+            <p >₹{product.old_price}</p>
+            <p>₹{product.new_price}</p>
             <p>{product.category}</p>
             <p>{product.description}</p>
             <div className="flex justify-center items-center space-x-2">
