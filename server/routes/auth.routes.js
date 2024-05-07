@@ -7,6 +7,6 @@ const authController = require('../controller/auth.controller');
 
 router.post('/login', authController.login);
 router.post('/signup', authController.signup);
-
+router.post('/auth/google', authController.googleLogin);
 
 module.exports = router;

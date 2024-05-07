@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser, FaShoppingCart, FaSearch, FaSignOutAlt } from 'react-icons/fa';
 import logo from '../Assets/furniHub.co.png';
 import { ShopContext } from '../../Context/ShopContext'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { Link as ScrollLink } from 'react-scroll';
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,6 +15,7 @@ const Navbar = () => {
   const { getTotalCartItems } = useContext(ShopContext);
   const dropdownRef = useRef(null);
   const [menu, setMenu] = useState(false); // or any initial value you want
+  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -51,30 +53,55 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Left Side */}
         <div className="flex items-center justify-start">
-          <Link to='/' className="flex items-center text-white font-semibold text-lg">
+
+          <ScrollLink
+            to="welcomeSection"
+            smooth={true}
+            duration={500}
+            className="flex items-center text-white font-semibold text-lg cursor-pointer">
             <img src={logo} alt="logo" className="h-10 mr-2" />
             <span className="hidden md:block">FurniHub.co</span>
-          </Link>
+          </ScrollLink>
+
           <ul className="hidden md:flex md:space-x-4 ml-8 text-white">
-            <li><Link to='/' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">Home</Link></li>
+            
+            <li>
+              {location.pathname === '/' ? (
+              <ScrollLink
+                to="welcomeSection"
+                smooth={true}
+                duration={500}
+                className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold cursor-pointer">
+                Home
+              </ScrollLink>
+              ) : (
+                <Link
+                  to="/"
+                  className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold cursor-pointer">
+                  Home
+                </Link>
+              )}
+
+            </li>
             {/* Dropdown for Categories */}
             <li>
-              <div className="relative">
+              <div className="relative" onMouseEnter={() => setCategoryMenu(true)} onMouseLeave={() => setCategoryMenu(false)}>
                 <button onClick={toggleCategoryMenu} className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">
                   Products
                 </button>
                 {categoryMenu && (
                   <ul className="absolute top-full left-0 bg-white shadow-lg py-2 rounded-md">
-                    <li><Link to='/table' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Tables</Link></li>
-                    <li><Link to='/chair' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Chairs</Link></li>
-                    <li><Link to='/almirah' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Almirahs</Link></li>
-                    <li><Link to='/bed' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Beds</Link></li>
-                    <li><Link to='/miscellaneous' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Miscellaneous</Link></li>
+                    <li><Link to='/table' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-bold">Tables</Link></li>
+                    <li><Link to='/chair' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-bold">Chairs</Link></li>
+                    <li><Link to='/almirah' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-bold">Almirahs</Link></li>
+                    <li><Link to='/bed' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-bold">Beds</Link></li>
+                    <li><Link to='/miscellaneous' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-bold">Miscellaneous</Link></li>
                     {/* Add more categories as needed */}
                   </ul>
                 )}
               </div>
             </li>
+            <li><Link to='/about-us' className="flex items-center hover:text-blue-300 transition duration-300 ease-in-out font-bold">About Us</Link></li>
           </ul>
         </div>
         
@@ -118,7 +145,7 @@ const Navbar = () => {
                   )}
                 </div>
               ) : (
-                <Link to='/login' className="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Login</Link>
+                <Link to='/login' className="text-slate-50 hover:text-blue-600 transition duration-300 ease-in-out">Login</Link>
               )}
               <Link to="/cart" className="relative flex items-center">
                 <FaShoppingCart className="text-white" style={{ fontSize: '1.5rem' }} /> {/* Increased icon size */}
