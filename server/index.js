@@ -18,6 +18,7 @@ const cartRouter = require('./routes/cart.routes');
 const authRoutes = require('./routes/auth.routes'); 
 const paymentRoutes = require('./routes/payment.route');
 const orderRoutes = require('./routes/order.routes');
+const orderProductRouter = require('./routes/orderProductRoutes'); 
 // const Users = require('./model/user.model');
 
 // const admin = require('firebase-admin');
@@ -81,6 +82,8 @@ app.use('/payment', paymentRoutes);
 
 // order
 app.use('/orders', orderRoutes);
+
+app.use('/order-products', orderProductRouter); // Use the order product router for the '/order-products' endpoint
 
 app.get("/", (req, res) => {
   res.send("Root");

@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const orderSchema = new Schema({
   products: [{
     name: { type: String, required: true },
-    quantity: { type: Number, required: true },
-    price: { type: Number, required: true }
+    price: { type: Number, required: true },
+    quantity: { type: Number, required: true }
   }],
   billingAddress: {
     address1: { type: String, required: true },
@@ -28,4 +28,5 @@ const orderSchema = new Schema({
   emailID: { type: String, required: true },  
   createdAt: { type: Date, default: Date.now }
 });
+
 module.exports = mongoose.model('Order', orderSchema);

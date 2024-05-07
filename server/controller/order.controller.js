@@ -8,7 +8,7 @@ exports.saveOrder = async (req, res) => {
   try {
     console.log('Request body:', req.body); // Log the request body
 
-    const { products, billingAddress, shippingAddress, orderId, fullName, emailID } = req.body;
+    const { products, billingAddress, shippingAddress, orderId, fullName, emailID, totalPrice } = req.body;
 
     const order = new Order({
       products,
@@ -16,7 +16,8 @@ exports.saveOrder = async (req, res) => {
       shippingAddress,
       orderId,
       fullName,
-      emailID
+      emailID,
+      totalPrice // Include totalPrice in the order document
     });
 
     await order.save();

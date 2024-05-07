@@ -84,7 +84,7 @@ const LoginSignup = () => {
   return (
     <div className="loginsignup">
       <div className="loginsignup-container">
-        <h1>{state}</h1>
+        <h1 class="big-bold-blue">Login</h1>
         <div className="loginsignup-fields">
           {state === "Sign Up" ? <input type="text" placeholder="Your name" name="username" value={formData.username} onChange={changeHandler} /> : <></>}
           <input type="email" placeholder="Email address" name="email" value={formData.email} onChange={changeHandler} />

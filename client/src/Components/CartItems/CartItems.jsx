@@ -84,9 +84,9 @@ const CartItems = () => {
   const handleOrderSubmit = async (orderId) => { 
     // Check if email check status is not error
     if (emailCheckStatus === "error") {
-      // If error, return without submitting order
       return;
     }
+  
     try {
       const orderData = {
         fullName,
@@ -96,14 +96,15 @@ const CartItems = () => {
           .map(productId => ({
             name: products[productId].name, // Access name if product exists
             quantity: cartItems[productId],
-            price: totalAmount
+            price: products[productId].new_price
           })),
         billingAddress,
         shippingAddress,
         totalPrice: totalAmount,
-        orderId: orderId // Include orderId in order data
+        orderId: orderId
       };
   
+      // Save order data to the database
       const response = await axios.post("http://localhost:4000/orders", orderData);
       navigate("/order-success", {
         state: {
@@ -128,6 +129,7 @@ const CartItems = () => {
       console.error("Error submitting order:", error);
     }
   };
+  
 
     return (
       <div className="bg-gray-100 min-h-screen py-8">
