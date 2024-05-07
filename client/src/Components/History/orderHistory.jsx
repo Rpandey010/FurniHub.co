@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-
+// const { sendEmailWithOrderHistory } = require('./order.mail');
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+
+  // const sendEmailWithOrderHistory = (fullName, emailID, orders) => {
+  //   // Your implementation here
+  // };
 
   const fetchOrderHistory = async (fullName, emailID) => {
     try {
@@ -14,7 +18,7 @@ const OrderHistory = () => {
         setErrorMessage("");
 
         // Send email with order history
-        sendEmailWithOrderHistory(fullName, emailID, data.orders);
+        // sendEmailWithOrderHistory(fullName, emailID, data.orders);
       } else {
         setOrders([]);
         setErrorMessage(data.message);
