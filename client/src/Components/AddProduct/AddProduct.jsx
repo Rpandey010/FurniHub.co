@@ -19,7 +19,8 @@ const AddProduct = () => {
     description: "",
   });
 
-
+// http://localhost:4000
+  
   const AddProduct = async () => {
     let dataObj;
     let product = productDetails;
