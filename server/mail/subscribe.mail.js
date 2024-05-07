@@ -57,7 +57,7 @@ const sendSubscriptionEmail = async (email) => {
                 <p>Thank you for subscribing to our newsletter!</p>
                 <p>We're excited to have you on board. To show our appreciation, we're offering you a <strong style="color: #007bff;">20% discount</strong> on your first purchase. Use the code <strong style="color: #007bff;">WELCOME20</strong> at checkout.</p>
                 <p>Start shopping now and discover our wide range of products!</p>
-                <a href="https://www.pornhub.com/" class="cta-button">Shop Now</a>
+                <a href="https://furnihub-52977.web.app/" class="cta-button">Shop Now</a>
               </div>
             </body>
           </html>
