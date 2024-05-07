@@ -87,4 +87,13 @@ body {
   }
 }
 
+.addproduct-desciption textarea, .addproduct-desciption input[type="text"] {
+  width: 10%; /* Increase the width to 100% of its parent container */
+  max-width: 50%; /* Lock the maximum width to 100% of its parent container */
+  min-width: 100%; /* Lock the minimum width to 100% of its parent container */
+  height: 80px; /* Set the height of the box */
+  max-height: 80px; /* Lock the maximum height of the box */
+  min-height: 80px; /* Lock the minimum height of the box */
+}
+
 /* Previous CSS styles... */

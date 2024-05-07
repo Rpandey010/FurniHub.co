@@ -22,7 +22,7 @@ exports.createProduct = async (req, res) => {
       address: req.body.address,
       height: req.body.height,
       width: req.body.width,
-      length: req.body.length,
+      // length: req.body.length,
       emailID: req.body.emailID,
       sellerName: req.body.sellerName,
       description: req.body.description,  

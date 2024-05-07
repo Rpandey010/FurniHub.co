@@ -43,7 +43,7 @@ const ProductDisplay = (props) => {
           <h1>Dimensions</h1>
           <p>Height: {product.height} inches</p>
           <p>Width: {product.width} inches</p>
-          <p>Length: {product.length} inches</p>
+          {/* <p>Length: {product.length} inches</p> */}
         </div>
         <button onClick={() => { addToCart(product.id); }}>ADD TO CART</button>
         <p className="productdisplay-right-category"><span>Category:</span> {product.category}</p>
