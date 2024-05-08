@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(cors());
 
 // Database Connection With MongoDB
-mongoose.connect("mongodb+srv://aryansharma21:aryanrandi@cluster0.0qhzcry.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/e-commerce");
+mongoose.connect("mongodb+srv://aryansharma21:Furnihub123@cluster0.0qhzcry.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/e-commerce");
 
 
 
