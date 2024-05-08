@@ -140,7 +140,7 @@ const CartItems = () => {
                       <img src={product.image} alt={product.name} className="w-16 h-16 mr-4" />
                       <div>
                         <p className="font-semibold">{product.name}</p>
-                        <p>${product.new_price}</p>
+                        <p>₹{product.new_price}</p>
                       </div>
                       <div className="ml-auto flex items-center">
                         <button className="text-red-500 mr-2" onClick={() => removeFromCart(product.id)}>
@@ -159,7 +159,7 @@ const CartItems = () => {
                 <h2 className="text-2xl font-semibold mb-4">Cart Totals</h2>
                 <div className="flex justify-between items-center mb-4">
                   <p>Subtotal</p>
-                  <p>${totalAmount}</p>
+                  <p>₹{totalAmount}</p>
                 </div>
                 <hr className="my-4" />
                 <div className="flex justify-between items-center mb-4">
@@ -169,7 +169,7 @@ const CartItems = () => {
                 <hr className="my-4" />
                 <div className="flex justify-between items-center">
                   <h3>Total</h3>
-                  <h3>${totalAmount}</h3>
+                  <h3>₹{totalAmount}</h3>
                 </div>
                 {currentStep === 0 && (
                   <button className="bg-blue-500 text-white py-2 px-4 mt-6 w-full rounded-md" onClick={handleCheckout}>
