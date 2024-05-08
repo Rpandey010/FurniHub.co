@@ -133,7 +133,7 @@ const Navbar = () => {
                   {menu && (
                     <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition-all duration-300 transform scale-100"
                       role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                      <div className="py-1" role="none">
+                      <div className="py-1" role="none" onMouseEnter={() => setMenu(true)} onMouseLeave={() => setMenu(false)}>
                         <Link to="/add-product" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Add Product</Link>
                         <Link to="/list-product" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">List Product</Link>
                         <Link to="/order-history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Order History</Link>
