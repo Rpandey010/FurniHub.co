@@ -51,7 +51,7 @@ app.post("/upload", upload.single('product'), (req, res) => {
         image_url: `https://furnihub-co-server.onrender.com/images/${req.file.filename}`
     })
 })
-app.use('/images', express.static('server/upload/images'));
+app.use('/images', express.static('upload/images'));
 
 // // MiddleWare to fetch user from database
 const fetchuser = async (req, res, next) => {
