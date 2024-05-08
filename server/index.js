@@ -51,7 +51,7 @@ app.post("/upload", upload.single('product'), (req, res) => {
         image_url: `https://github.com/Rpandey010/FurniHub.co/tree/main/server/upload/images/${req.file.filename}`
     })
 })
-app.use('/images', express.static('upload/images'));
+app.use('/images', express.static('server/upload/images'));
 
 // // MiddleWare to fetch user from database
 const fetchuser = async (req, res, next) => {
