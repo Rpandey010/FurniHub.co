@@ -10,7 +10,7 @@ const OrderHistory = () => {
 
   const fetchOrderHistory = async (fullName, emailID) => {
     try {
-      const response = await fetch(`https://furnihub-co-server.onrender.com/orders/history?fullName=${encodeURIComponent(fullName)}&emailID=${encodeURIComponent(emailID)}`);
+      const response = await fetch(`http://localhost:4000/orders/history?fullName=${encodeURIComponent(fullName)}&emailID=${encodeURIComponent(emailID)}`);
       const data = await response.json();
 
       if (response.ok) {

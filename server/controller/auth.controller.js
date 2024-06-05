@@ -92,21 +92,24 @@ const googleLogin = async (req, res) => {
         if (!user) {
             user = new Users({ uid: uid, email: email, username: username });
         } else {
-            if (!user.email) {
-                user.email = email;
-            }
+            user.email = email; // Always update the email
         }
 
-        // Save the user and log any errors
-        await user.save().catch(err => console.error(err));
+        // Save the user and handle any errors
+        try {
+            await user.save();
+        } catch (err) {
+            console.error('Error saving user:', err);
+            return res.status(500).json({ success: false, message: err.message });
+        }
 
+        // Return success response with user details
         return res.json({ success: true, uid: uid, email: email, username: username });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ success: false, message: error.message });
     }
 };
-
 
 
 module.exports = { fetchUser, login, signup, googleLogin }; // Exporting all functions together

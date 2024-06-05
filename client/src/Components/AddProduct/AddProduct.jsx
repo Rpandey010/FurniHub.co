@@ -1,66 +1,57 @@
 import React, { useState } from "react";
 import "./AddProduct.css";
 import upload_area from "../Assets/upload_area.svg";
+import { storage } from "../firebase"; // Import Firebase storage
 
 const AddProduct = () => {
-  const [image, setImage] = useState(false);
+  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [productDetails, setProductDetails] = useState({
     name: "",
-    image: "",
     category: "table",
     new_price: "",
     old_price: "",
     address: "",
     height: "",
     width: "",
-    // length: "",
-    emailID: "", // Added emailID field
-    sellerName: "", // Added sellerName field
+    emailID: "",
+    sellerName: "",
     description: "",
   });
 
-// http://localhost:4000
-  
+  const uploadImage = async (file) => {
+    const storageRef = storage.ref();
+    const fileRef = storageRef.child(file.name);
+    await fileRef.put(file);
+    const url = await fileRef.getDownloadURL();
+    setImageUrl(url);
+  };
+
   const AddProduct = async () => {
-    let dataObj;
-    let product = productDetails;
+    if (!imageUrl) {
+      alert("Image is uploading. Please wait.");
+      return;
+    }
 
-    let formData = new FormData();
-    formData.append("product", image);
+    const product = { ...productDetails, image: imageUrl };
 
-    await fetch("https://furnihub-co-server.onrender.com/upload", {
+    await fetch("http://localhost:4000/products/addproduct", {
       method: "POST",
       headers: {
         Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body: formData,
+      body: JSON.stringify(product),
     })
-      .then((resp) => resp.json())
-      .then((data) => {
-        dataObj = data;
-      });
-
-    if (dataObj.success) {
-      product.image = dataObj.image_url;
-      console.log(product);
-      await fetch("https://furnihub-co-server.onrender.com/products/addproduct", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-      .then((resp) => resp.json())
-      .then((data) => {
-        if (data.success) {
-          alert("Product Added");
-        } else {
-          alert("Failed");
-        }
-      });
-  }
-};
+    .then((resp) => resp.json())
+    .then((data) => {
+      if (data.success) {
+        alert("Product Added");
+      } else {
+        alert("Failed");
+      }
+    });
+  };
 
   const validateEmail = (value) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -70,17 +61,20 @@ const AddProduct = () => {
     }
     return true;
   };
-  
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setProductDetails({ ...productDetails, [name]: value });
   };
 
   const imageHandler = (e) => {
-    setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      uploadImage(file);
+    }
   };
 
-  
   return (
     <div className="addproduct" style={{ marginTop: "80px" }}>
       <div className="addproduct-itemfield">
@@ -89,9 +83,7 @@ const AddProduct = () => {
           type="text"
           name="name"
           value={productDetails.name}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
+          onChange={(e) => changeHandler(e)}
           placeholder="Type here"
         />
       </div>
@@ -102,9 +94,7 @@ const AddProduct = () => {
             type="number"
             name="old_price"
             value={productDetails.old_price}
-            onChange={(e) => {
-              changeHandler(e);
-            }}
+            onChange={(e) => changeHandler(e)}
             placeholder="Type here"
           />
         </div>
@@ -114,9 +104,7 @@ const AddProduct = () => {
             type="number"
             name="new_price"
             value={productDetails.new_price}
-            onChange={(e) => {
-              changeHandler(e);
-            }}
+            onChange={(e) => changeHandler(e)}
             placeholder="Type here"
           />
         </div>
@@ -142,9 +130,7 @@ const AddProduct = () => {
           type="number"
           name="height"
           value={productDetails.height}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
+          onChange={(e) => changeHandler(e)}
           placeholder="Enter height (inch)"
         />
       </div>
@@ -154,52 +140,29 @@ const AddProduct = () => {
           type="number"
           name="width"
           value={productDetails.width}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
+          onChange={(e) => changeHandler(e)}
           placeholder="Enter width (inch)"
         />
       </div>
-      {/* <div className="addproduct-itemfield">
-        <p>Length</p>
-        <input
-          type="number"
-          name="length"
-          value={productDetails.length}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
-          placeholder="Enter length (inch)"
-        />
-      </div> */}
-
-      {/* desciption  */}
       <div className="addproduct-desciption">
         <p>Description</p>
         <textarea
           name="description"
           value={productDetails.description}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
+          onChange={(e) => changeHandler(e)}
           placeholder="Enter description"
         />
       </div>
-
       <div className="addproduct-itemfield">
         <p>Seller Name</p>
         <input
           type="text"
           name="sellerName"
           value={productDetails.sellerName}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
+          onChange={(e) => changeHandler(e)}
           placeholder="Enter seller name"
         />
       </div>
-
-      
       <div className="addproduct-itemfield">
         <p>Email ID</p>
         <input
@@ -211,16 +174,13 @@ const AddProduct = () => {
           placeholder="Enter email ID"
         />
       </div>
-
       <div className="addproduct-itemfield">
         <p>Address</p>
         <input
           type="text"
           name="address"
           value={productDetails.address}
-          onChange={(e) => {
-            changeHandler(e);
-          }}
+          onChange={(e) => changeHandler(e)}
           placeholder="Enter address"
         />
       </div>
@@ -234,9 +194,7 @@ const AddProduct = () => {
           />
         </label>
         <input
-          onChange={(e) => {
-            imageHandler(e);
-          }}
+          onChange={(e) => imageHandler(e)}
           type="file"
           name="image"
           id="file-input"

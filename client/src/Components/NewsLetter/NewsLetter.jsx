@@ -6,7 +6,7 @@ const NewsLetter = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch('https://furnihub-co-server.onrender.com/subscribe', {
+    fetch('http://localhost:4000/subscribe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

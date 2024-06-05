@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(cors());
 
 // Database Connection With MongoDB
-mongoose.connect("mongodb+srv://aryansharma21:aryanrandi@cluster0.0qhzcry.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/e-commerce");
+mongoose.connect("mongodb+srv://aryansharma21:Furnihub123@cluster0.0qhzcry.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/e-commerce");
 
 
 
@@ -48,7 +48,7 @@ const upload = multer({storage: storage})
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
-        image_url: `https://furnihub-co-server.onrender.com/images/${req.file.filename}`
+        image_url: `http://localhost:4000/images/${req.file.filename}`
     })
 })
 app.use('/images', express.static('upload/images'));

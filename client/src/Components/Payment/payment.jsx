@@ -19,7 +19,7 @@ const Payment = ({ cartItems, getTotalCartAmount, onSubmitOrder }) => {
 
   const handlePayment = async () => {
     // Step 1: Create order on Razorpay
-    const response = await fetch("https://furnihub-co-server.onrender.com/payment/create-order", {
+    const response = await fetch("http://localhost:4000/payment/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const Payment = ({ cartItems, getTotalCartAmount, onSubmitOrder }) => {
       description: "Payment for your order",
       handler: async function (response) {
         // Step 3: Verify payment on your server
-        const verifyResponse = await fetch("https://furnihub-co-server.onrender.com/payment/verify-payment", {
+        const verifyResponse = await fetch("http://localhost:4000/payment/verify-payment", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

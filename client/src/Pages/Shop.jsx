@@ -11,10 +11,10 @@ const Shop = () => {
   const [newcollection, setNewCollection] = useState([]);
 
   const fetchInfo = () => { 
-    fetch("https://furnihub-co-server.onrender.com/products/popularinwomen")
+    fetch("http://localhost:4000/products/popularinwomen")
             .then((res) => res.json()) 
             .then((data) => setPopular(data))
-            fetch("https://furnihub-co-server.onrender.com/products/newcollections")
+            fetch("http://localhost:4000/products/newcollections")
              .then((res) => res.json()) 
             .then((data) => setNewCollection(data))
     }

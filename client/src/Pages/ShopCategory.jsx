@@ -10,7 +10,7 @@ const ShopCategory = (props) => {
   const [sortOrder, setSortOrder] = useState('asc'); // Default sort order is ascending
 
   const fetchInfo = () => { 
-    fetch('https://furnihub-co-server.onrender.com/products/allproducts') 
+    fetch('http://localhost:4000/products/allproducts') 
             .then((res) => res.json()) 
             .then((data) => setAllProducts(data))
   }
